@@ -1,16 +1,45 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# String Counter
 
-Currently, two official plugins are available:
+A lightweight and user-friendly String Counter application built using **React** and **Vite**.  
+This app allows users to analyze text by counting the **number of words, letters, and sentences** in real time.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It is designed with a clean UI and fast performance, making it useful for students, writers, and developers who need quick text analysis.
 
-## React Compiler
+Features
+- Real-time word count
+- Letter count (with or without spaces)
+- Sentence count
+- Fast performance using Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
+- ⚛️ React
+- ⚡ Vite
+- 🎨 CSS
+- 🧠 JavaScript (ES6+)
 
-## Expanding the ESLint configuration
+## Learning Outcomes
+- React functional components
+- useState hook
+- Handling user input
+- Real-time data rendering
+- Vite project setup
+- Real-time word count
+- Letter count
+- Sentence count
+- Convert text to **UPPERCASE**
+- Convert text to **lowercase**
+- Clear text with one click
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## How It Works
+- User enters text in the input area
+- The app analyzes the text in real time
+- Counts:
+  - Total words
+  - Total letters
+  - Total sentences
+
+## Buttons Included
+- 🔠 UpperCase
+- 🔡 LowerCase
+- ❌ Clear
