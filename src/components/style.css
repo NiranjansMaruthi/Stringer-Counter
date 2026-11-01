@@ -1,64 +1,188 @@
-.wrapper{
-    width: 50%;
-    height: auto;
-    border: 2px solid rgb(0, 0, 0);
-    align-items: center;
-    justify-items: center;
-    flex-wrap: wrap;
-    margin:10px;
-    box-shadow: 2px 2px 5px  5px rgb(67, 68, 67);
-    border-radius: 3%;
+/* ---------- Tokens ---------- */
+:root {
+    --bg: #eef1ec;
+    --surface: #ffffff;
+    --ink: #1c211c;
+    --ink-soft: #5b645b;
+    --line: #cfd6cf;
+    --accent: #2f5d3a;
+    --accent-hover: #244a2d;
+    --accent-ink: #ffffff;
+    --stat-bg: #e3eae3;
+
+    --radius: 14px;
+    --radius-sm: 8px;
+    --font: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
 }
 
-h1{
-         font-size:40px;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #141814;
+        --surface: #1d231d;
+        --ink: #e8ede8;
+        --ink-soft: #9aa59a;
+        --line: #333c33;
+        --accent: #7fbf8e;
+        --accent-hover: #98d0a5;
+        --accent-ink: #10150f;
+        --stat-bg: #263026;
+    }
 }
 
-.counter{
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+}
+
+/* ---------- Layout ---------- */
+.wrapper {
+    width: min(100% - 32px, 680px);
+    margin: clamp(16px, 5vw, 56px) auto;
+    padding: clamp(20px, 5vw, 40px);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     display: flex;
-    gap: 80px;
+    flex-direction: column;
+    gap: 24px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     text-align: center;
-    flex-wrap: wrap;
 }
 
-.counter h3 {
-    width: 130px;
-    height: 12vh;
-    background-color: rgb(64, 67, 64);
-    margin-top: 10px;
-    border-radius: 10%;
-    padding: 15px;
-    box-shadow: 3px 3px rgb(184, 206, 184);
+/* ---------- Stats ---------- */
+.counter {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }
 
-.counter h2{
-    margin-top: -50px;
-    margin-bottom: 30px;
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 14px 8px;
+    background: var(--stat-bg);
+    border-radius: var(--radius-sm);
+    text-align: center;
 }
 
-textarea{
-    width: 80%;
-    height: 10vh;
-    margin: 40px;
-    border: 2px solid black;
-    border-radius: 10px;
-    padding-top: 7px;
-    padding-left: 10px;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+.stat h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+}
+
+.stat h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 6vw, 2.25rem);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+}
+
+/* ---------- Text area ---------- */
+textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 14px;
+    background: var(--surface);
+    color: var(--ink);
+    border: 2px solid var(--line);
+    border-radius: var(--radius-sm);
+    font: 1rem/1.5 var(--font);
+    resize: vertical;
+}
+
+textarea::placeholder {
+    color: var(--ink-soft);
+}
+
+textarea:focus-visible {
     outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
-.btn button{
-    width: 90px;
-    gap: 30px;
-    margin: 10px;
-    color: black;
-    font-size: 15px;
-    padding: 2px;
-    font-weight: 500px;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 3px;
-    box-shadow: 3px 3px rgb(33, 36, 33);
+/* ---------- Buttons ---------- */
+.btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn button {
+    flex: 1 1 110px;
+    padding: 10px 14px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: none;
+    border-radius: var(--radius-sm);
+    font: 600 0.95rem var(--font);
+    cursor: pointer;
+    transition: background-color 0.15s, transform 0.1s;
+}
+
+.btn button:hover {
+    background: var(--accent-hover);
+}
+
+.btn button:active {
+    transform: translateY(1px);
+}
+
+.btn button:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    outline-offset: 2px;
+}
+
+.btn button.secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--line);
+}
+
+.btn button.secondary:hover {
+    background: var(--stat-bg);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+    .counter {
+        gap: 8px;
+    }
+
+    .stat {
+        padding: 12px 4px;
+    }
+
+    .stat h3 {
+        font-size: 0.8rem;
+    }
+
+    textarea {
+        min-height: 140px;
+    }
+
+    .btn button {
+        flex-basis: 100%;
+    }
 }
